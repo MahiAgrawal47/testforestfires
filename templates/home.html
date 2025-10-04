@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fire Prediction Input Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f8fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    form {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 400px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 15px;
+    }
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 10px;
+      border: none;
+      background: #4CAF50;
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <form action="{{url_for('predict_datapoint')}}" method="POST">
+    <h2>Fire Prediction Input Form</h2>
+
+    <label for="Temperature">Temperature (°C):</label>
+    <input type="number" step="any" id="Temperature" name="Temperature" required>
+
+    <label for="RH">Relative Humidity (%):</label>
+    <input type="number" step="any" id="RH" name="RH" required>
+
+    <label for="Ws">Wind Speed (km/h):</label>
+    <input type="number" step="any" id="Ws" name="Ws" required>
+
+    <label for="Rain">Rain (mm):</label>
+    <input type="number" step="any" id="Rain" name="Rain" required>
+
+    <label for="FFMC">FFMC:</label>
+    <input type="number" step="any" id="FFMC" name="FFMC" required>
+
+    <label for="DMC">DMC:</label>
+    <input type="number" step="any" id="DMC" name="DMC" required>
+
+    <label for="DC">DC:</label>
+    <input type="number" step="any" id="DC" name="DC" required>
+
+    <label for="ISI">ISI:</label>
+    <input type="number" step="any" id="ISI" name="ISI" required>
+    
+    <label for="classes">classes:</label>
+    <input type="number" name="classes" placeholder="classes" id="classes" required="required" /><br>
+
+    <label for="region">region:</label>
+    <input type="number" name="region" placeholder="region" id="region" required="required" /><br>
+
+
+    <button type="submit">predict</button>
+  </form>
+  <h2>
+    THE FWI PREDICTION IS {{results}}
+  </h2>
+</body>
+</html>
